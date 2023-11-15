@@ -1,0 +1,218 @@
+body {
+    font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+    background-color: #fff; /* Couleur de fond plus claire */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Couleur de texte plus foncée */
+}
+
+#header {
+    background-color: #4CAF50; /* Vert vif */
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'HandelGothic', 'Trebuchet MS', sans-serif;
+    color: #fff; /* Texte blanc pour le titre */
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff; /* Fond blanc pour le conteneur principal */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Légère ombre pour la profondeur */
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
+    grid-gap: 1px;
+    background-color: #4CAF50; /* Couleur de fond plus claire pour les cellules */
+    border: 1px solid #ccc; /* Légère bordure */
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc; /* Légère bordure */
+    background-color: #eee; /* Couleur de fond plus claire pour les cellules inactives */
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cell:hover {
+    background-color: #B3E0FF; /* Couleur de survol pour les cellules actives */
+}
+
+#bloc {
+    background-color: #4CAF50; /* Vert vif */
+    color: #fff;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#slider {
+    text-align: center;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 10px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+}
+
+.time-slider {
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px 0px;
+    margin-left: 10px;
+}
+
+i.fa-gauge-simple-high {
+    margin-left: 10px;
+    color: #4CAF50; /* Même couleur que le bouton Démarrer */
+}
+
+.row-slider {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+#generation-counter,
+#time-counter {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333; /* Couleur de texte plus foncée */
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px 0;
+    height: 100%;
+}
+
+button {
+    flex-grow: 1;
+    padding: 10px 20px;
+    margin: 0 10px;
+    margin-bottom: 20%;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Vert vif */
+    color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049; /* Variation légèrement plus foncée pour le survol */
+    border-color: #fff;
+}
+
+#footer {
+    background-color: #4CAF50; /* Vert vif */
+    padding: 15px 0;
+    text-align: center;
+    border-top: 2px solid #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'HandelGothic', 'Trebuchet MS', sans-serif;
+}
+
+/* Ajoutez ces règles pour rendre le jeu plus responsive sur les téléphones */
+@media only screen and (max-width: 768px) {
+    #container {
+        flex-direction: column; /* Changez la direction en colonne pour les petits écrans */
+    }
+    
+    #slider, .row-slider, .time-slider {
+        width: 100%; /* Rendez les sliders occupent la largeur totale */
+    }
+
+    #buttons {
+        flex-direction: row; /* Changez la direction en ligne pour les petits écrans */
+    }
+
+    button {
+        margin-bottom: 0; /* Pas de marge en bas pour les boutons sur les petits écrans */
+    }
+
+    #grid-container {
+        grid-template-columns: repeat(20, 15px); /* Ajustez le nombre de colonnes pour les petits écrans */
+        grid-template-rows: repeat(20, 15px); /* Ajustez le nombre de lignes pour les petits écrans */
+    }
+
+    .cell {
+        width: 15px; /* Ajustez la taille des cellules pour les petits écrans */
+        height: 15px;
+    }
+}
+
+/* Ajoutez ces règles spécifiquement pour les téléphones */
+@media only screen and (max-width: 480px) {
+    #container {
+        flex-direction: column; /* Changez la direction en colonne pour les petits écrans */
+        align-items: center; /* Centrez les éléments sur l'axe transversal */
+    }
+
+    #buttons {
+        flex-direction: row; /* Placez les boutons sur la même ligne */
+        flex-wrap: wrap; /* Permettez aux boutons de passer à la ligne si nécessaire */
+        justify-content: center; /* Centrez les boutons horizontalement */
+    }
+
+    button {
+        flex-grow: 1; /* Permettez aux boutons de grandir en largeur */
+        margin: 5px; /* Ajoutez une marge entre les boutons */
+        font-size: 12px; /* Réduisez la taille de la police pour les boutons */
+    }
+
+    #grid-container {
+        grid-template-columns: repeat(20, 15px); /* Ajustez le nombre de colonnes pour les téléphones */
+        grid-template-rows: repeat(20, 15px); /* Ajustez le nombre de lignes pour les téléphones */
+        height: 100%;
+        width: 100%;
+    }
+
+    .cell {
+        width: 15px; /* Rétablissez la taille des cellules pour les téléphones */
+        height: 15px;
+    }
+
+    #generation-counter,
+    #time-counter {
+        font-size: 14px; /* Réduisez la taille de la police pour les textes */
+    }
+
+    #footer {
+        background-color: #4CAF50; /* Vert vif */
+        padding: 5px 0;
+        text-align: center;
+        border-top: 2px solid #333;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        font-family: 'HandelGothic', 'Trebuchet MS', sans-serif;
+        height: 5%;
+    }
+    .row-slider {
+        display: none; /* Masquer le select pour les résolutions inférieures à 480 pixels */
+    }
+}
