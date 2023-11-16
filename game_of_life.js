@@ -6,11 +6,11 @@ let intervalId;
 let generationCount = 0;
 let startTime;
 let interval = 100;
-let rows = 20;
-let cols = 20;
+let rows = 15;
+let cols = 15;
 
 function createEmptyGrid() {
-    return Array.from({ length: 20 }, () => Array(20).fill(false));
+    return Array.from({ length: 15 }, () => Array(15).fill(false));
 }
 
 function initializeGrid() {
@@ -23,8 +23,8 @@ function initializeGrid() {
     const gridRowValue = `repeat(${rows}, 20px)`;
 
     if (window.innerWidth <= 480) {
-        gridContainer.style.gridTemplateColumns = `repeat(20, 15px)`;
-        gridContainer.style.gridTemplateRows = `repeat(20, 15px)`;
+        gridContainer.style.gridTemplateColumns = `repeat(15, 15px)`;
+        gridContainer.style.gridTemplateRows = `repeat(15, 15px)`;
         for (let i = 0; i < 15; i++) {
             for (let j = 0; j < 15; j++) {
                 const cell = document.createElement('div');
@@ -51,11 +51,21 @@ function updateGridDisplay() {
     const gridContainer = document.getElementById('grid-container');
     const cells = gridContainer.getElementsByClassName('cell');
 
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const index = i * cols + j;
-            const cell = cells[index];
-            cell.style.backgroundColor = grid[i][j] ? '#4CAF50' : 'white';
+    if (window.innerWidth <= 480) {
+        for (let i = 0; i < 15; i++) {
+            for (let j = 0; j < 15; j++) {
+                const index = i * cols + j;
+                const cell = cells[index];
+                cell.style.backgroundColor = grid[i][j] ? '#4CAF50' : 'white';
+            }
+        }
+    }else {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const index = i * cols + j;
+                const cell = cells[index];
+                cell.style.backgroundColor = grid[i][j] ? '#4CAF50' : 'white';
+            }
         }
     }
 }
@@ -95,21 +105,41 @@ function clearGrid() {
     stopGame();
     const gridContainer = document.getElementById('grid-container');
     const cells = gridContainer.getElementsByClassName('cell');
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const index = i * cols + j;
-            const cell = cells[index];
-            cell.style.backgroundColor = grid[i][j] ? '#ddd' : '#eee';
+    if(window.innerWidth <= 480) {
+        for (let i = 0; i < 15; i++) {
+            for (let j = 0; j < 15; j++) {
+                const index = i * cols + j;
+                const cell = cells[index];
+                cell.style.backgroundColor = grid[i][j] ? '#ddd' : '#eee';
+            }
+        }
+    } else {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const index = i * cols + j;
+                const cell = cells[index];
+                cell.style.backgroundColor = grid[i][j] ? '#ddd' : '#eee';
+            }
         }
     }
 }
 
 function randomSeed() {
     clearGrid();
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            if (Math.random() > 0.7) {
-                toggleCell(i, j);
+    if(window.innerWidth <= 480) {
+        for (let i = 0; i < 15; i++) {
+            for (let j = 0; j < 15; j++) {
+                if (Math.random() > 0.7) {
+                    toggleCell(i, j);
+                }
+            }
+        }
+    } else {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                if (Math.random() > 0.7) {
+                    toggleCell(i, j);
+                }
             }
         }
     }
@@ -117,14 +147,26 @@ function randomSeed() {
 
 function updateGame() {
     const newGrid = createEmptyGrid();
-
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const neighbors = countNeighbors(i, j);
-            if (grid[i][j]) {
-                newGrid[i][j] = neighbors === 2 || neighbors === 3;
-            } else {
-                newGrid[i][j] = neighbors === 3;
+    if(window.innerWidth <= 480) {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const neighbors = countNeighbors(i, j);
+                if (grid[i][j]) {
+                    newGrid[i][j] = neighbors === 2 || neighbors === 3;
+                } else {
+                    newGrid[i][j] = neighbors === 3;
+                }
+            }
+        }
+    } else {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const neighbors = countNeighbors(i, j);
+                if (grid[i][j]) {
+                    newGrid[i][j] = neighbors === 2 || neighbors === 3;
+                } else {
+                    newGrid[i][j] = neighbors === 3;
+                }
             }
         }
     }

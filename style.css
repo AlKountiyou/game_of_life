@@ -57,6 +57,7 @@ h1 {
     margin: 20px;
     padding: 10px;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 #slider {
@@ -163,6 +164,9 @@ button:hover {
         width: 15px; /* Ajustez la taille des cellules pour les petits écrans */
         height: 15px;
     }
+    .row-slider {
+        display: none; /* Masquer le select pour les résolutions inférieures à 480 pixels */
+    }
 }
 
 /* Ajoutez ces règles spécifiquement pour les téléphones */
@@ -185,15 +189,23 @@ button:hover {
     }
 
     #grid-container {
-        grid-template-columns: repeat(20, 15px); /* Ajustez le nombre de colonnes pour les téléphones */
-        grid-template-rows: repeat(20, 15px); /* Ajustez le nombre de lignes pour les téléphones */
-        height: 100%;
-        width: 100%;
+        grid-template-columns: repeat(15, 15px); /* Ajustez le nombre de colonnes pour les téléphones */
+        grid-template-rows: repeat(15, 15px); /* Ajustez le nombre de lignes pour les téléphones */
     }
 
     .cell {
         width: 15px; /* Rétablissez la taille des cellules pour les téléphones */
         height: 15px;
+    }
+
+    #bloc {
+        background-color: #4CAF50; /* Vert vif */
+        color: #fff;
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 15px rgba(0, 0, 0, 0.2);
     }
 
     #generation-counter,
@@ -211,6 +223,11 @@ button:hover {
         width: 100%;
         font-family: 'HandelGothic', 'Trebuchet MS', sans-serif;
         height: 5%;
+    }
+    
+    i.fa-gauge-simple-high {
+        margin-left: 0;
+        color: #4CAF50; /* Même couleur que le bouton Démarrer */
     }
     .row-slider {
         display: none; /* Masquer le select pour les résolutions inférieures à 480 pixels */
