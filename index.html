@@ -29,6 +29,10 @@
                 <i class="fa fa-random" aria-hidden="true"></i> Génération aléatoire
             </button>
         </div>
+        <div class="slider-container">
+            <i class="fa-solid fa-gauge-simple-high"></i>
+            <input type="range" min="0" max="200" value="100" class="time-slider" id="time-slider" onchange="updateInterval(this.value)">
+        </div>
         <div id="grid-container"></div>
        <div id="blocs">
             <div id="bloc">
@@ -36,7 +40,7 @@
                 <p id="time-counter">Temps écoulé:<br/> 0s</p>
             </div>
             <div id="slider">
-                <div class="slider-container">
+                <div class="slider-container-1">
                     <i class="fa-solid fa-gauge-simple-high"></i>
                     <input type="range" min="0" max="200" value="100" class="time-slider" id="time-slider" onchange="updateInterval(this.value)">
                 </div>

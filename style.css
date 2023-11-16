@@ -69,6 +69,10 @@ h1 {
 }
 
 .slider-container {
+    display: none;
+}
+
+.slider-container-1 {
     display: flex;
     align-items: center;
 }
@@ -212,6 +216,15 @@ button:hover {
     #generation-counter,
     #time-counter {
         font-size: 14px; /* Réduisez la taille de la police pour les textes */
+    }
+
+    .slider-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .slider-container-1 {
+        display: none;
     }
 
     #footer {
